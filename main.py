@@ -1,7 +1,7 @@
 import sys
-from DataLoader import LoaderXML, LoaderJSON
+from DataWriter import WriterXML, WriterJSON
 from DataMerger import Merger
-from DataParser import ParserJSON
+from DataReader import ReaderJSON
 
 
 class DataType:
@@ -10,20 +10,20 @@ class DataType:
 
 
 loaders_registry = {
-    DataType.JSON: LoaderJSON,
-    DataType.XML: LoaderXML,
+    DataType.JSON: WriterJSON,
+    DataType.XML: WriterXML,
 }
 
 
 def start(students_path, rooms_path, file_format):
-    parser = ParserJSON(students_path, rooms_path)
+    parser = ReaderJSON(students_path, rooms_path)
     merger = Merger(parser.rooms, parser.students)
     loader_class = loaders_registry.get(file_format)
     if loader_class is None:
         print('Incorrect format!')
     else:
         loader = loader_class(merger.rooms_with_students, '')
-        loader.load()
+        loader.write()
 
 
 if __name__ == '__main__':
