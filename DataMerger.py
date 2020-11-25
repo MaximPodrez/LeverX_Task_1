@@ -16,6 +16,7 @@ class Merger:
 
     def merge(self) -> None:
         for student in self.students:
-            self.rooms_with_students[str(student['room'])]['students'][str(student['id'])] = {
+            room = self.rooms_with_students[str(student['room'])]
+            room['students'][str(student['id'])] = {
                 'name': student['name']
             }
