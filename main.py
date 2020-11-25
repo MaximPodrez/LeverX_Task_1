@@ -1,7 +1,7 @@
 import argparse
-from DataWriter import WriterXML, WriterJSON
-from DataMerger import Merger
-from DataReader import ReaderJSON
+from data_writer import WriterXML, WriterJSON
+from data_merger import Merger
+from data_reader import ReaderJSON
 
 
 class DataType:
