@@ -30,6 +30,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Merge rooms and students script')
     parser.add_argument('-students', action="store", dest="students")
     parser.add_argument('-rooms', action="store", dest="rooms")
-    parser.add_argument('-type', action="store", dest="type")
+    parser.add_argument('-format', action="store", dest="format")
     args = parser.parse_args()
-    start(args.students, args.rooms, args.type)
+    start(args.students, args.rooms, args.format)
