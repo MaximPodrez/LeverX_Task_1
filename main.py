@@ -14,9 +14,14 @@ writer_registry = {
     DataType.XML: WriterXML,
 }
 
+read_registry = {
+    DataType.JSON: ReaderJSON,
+}
+
 
 def start(students_path, rooms_path, file_format):
-    reader = ReaderJSON()
+    reader_class = read_registry.get('json')
+    reader = reader_class()
     students = reader.read(students_path)
     rooms = reader.read(rooms_path)
     merger = RoomsStudentsMerger(rooms, students)
