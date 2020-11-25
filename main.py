@@ -1,6 +1,6 @@
 import argparse
 from data_writer import WriterXML, WriterJSON
-from data_merger import Merger
+from data_merger import RoomsStudentsMerger
 from data_reader import ReaderJSON
 
 
@@ -17,12 +17,13 @@ writer_registry = {
 
 def start(students_path, rooms_path, file_format):
     reader = ReaderJSON(students_path, rooms_path)
-    merger = Merger(reader.rooms, reader.students)
+    merger = RoomsStudentsMerger(reader.rooms, reader.students)
+    result = merger.merge()
     loader_class = writer_registry.get(file_format)
     if loader_class is None:
         print('Incorrect format!')
     else:
-        loader = loader_class(merger.rooms_with_students, '')
+        loader = loader_class(result, '')
         loader.write()
 
 
