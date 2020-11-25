@@ -9,7 +9,7 @@ class DataType:
     XML = 'xml'
 
 
-loaders_registry = {
+writer_registry = {
     DataType.JSON: WriterJSON,
     DataType.XML: WriterXML,
 }
@@ -18,7 +18,7 @@ loaders_registry = {
 def start(students_path, rooms_path, file_format):
     reader = ReaderJSON(students_path, rooms_path)
     merger = Merger(reader.rooms, reader.students)
-    loader_class = loaders_registry.get(file_format)
+    loader_class = writer_registry.get(file_format)
     if loader_class is None:
         print('Incorrect format!')
     else:
