@@ -30,8 +30,8 @@ def start(students_path, rooms_path, file_format):
     if writer_class is None:
         print('Incorrect format!')
     else:
-        writer = writer_class(result, '')
-        writer.write()
+        writer = writer_class()
+        writer.write(result, '')
 
 
 if __name__ == '__main__':
