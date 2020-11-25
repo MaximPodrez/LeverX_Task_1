@@ -19,11 +19,11 @@ def start(students_path, rooms_path, file_format):
     reader = ReaderJSON(students_path, rooms_path)
     merger = RoomsStudentsMerger(reader.rooms, reader.students)
     result = merger.merge()
-    loader_class = writer_registry.get(file_format)
-    if loader_class is None:
+    writer_class = writer_registry.get(file_format)
+    if writer_class is None:
         print('Incorrect format!')
     else:
-        loader = loader_class(result, '')
+        loader = writer_class(result, '')
         loader.write()
 
 
