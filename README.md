@@ -32,6 +32,6 @@ format = [xml, json]
 
 Ожидается использование ООП и SOLID
 ## Запуск
-python3 main.py [students filename path] [rooms filename path] [format]
+python3 main.py -students [students filename path] -rooms [rooms filename path] -format [format]
 
 format = [xml, json]
