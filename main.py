@@ -27,7 +27,7 @@ def start(students_path, rooms_path, file_format):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Ping script')
+    parser = argparse.ArgumentParser(description='Merge rooms and students script')
     parser.add_argument('-students', action="store", dest="students")
     parser.add_argument('-rooms', action="store", dest="rooms")
     parser.add_argument('-type', action="store", dest="type")
