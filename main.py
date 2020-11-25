@@ -16,15 +16,17 @@ writer_registry = {
 
 
 def start(students_path, rooms_path, file_format):
-    reader = ReaderJSON(students_path, rooms_path)
-    merger = RoomsStudentsMerger(reader.rooms, reader.students)
+    reader = ReaderJSON()
+    students = reader.read(students_path)
+    rooms = reader.read(rooms_path)
+    merger = RoomsStudentsMerger(rooms, students)
     result = merger.merge()
     writer_class = writer_registry.get(file_format)
     if writer_class is None:
         print('Incorrect format!')
     else:
-        loader = writer_class(result, '')
-        loader.write()
+        writer = writer_class(result, '')
+        writer.write()
 
 
 if __name__ == '__main__':
